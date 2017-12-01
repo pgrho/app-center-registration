@@ -1,0 +1,29 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Registration";
+}
+
+<div class="container">
+    <form class="col-sm-6" method="post">
+
+        @if (Model.Result == true)
+        {
+            <div class="alert alert-success">Success</div>
+        }
+        else if (Model.Result == false)
+        {
+            <div class="alert alert-danger">Failed</div>
+        }
+
+        <div class="form-group">
+            <label class="control-label" asp-for="MailAddress">Mail Address</label>
+            <div>
+                <input type="email" asp-for="MailAddress" class="form-control" />
+                <span asp-validation-for="MailAddress" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Register</button>
+        </div>
+    </form>
+</div>
