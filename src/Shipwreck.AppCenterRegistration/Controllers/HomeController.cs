@@ -28,7 +28,7 @@ namespace Shipwreck.AppCenterRegistration.Controllers
             _Configuration.AppName = _Configuration.AppName ?? Environment.GetEnvironmentVariable("APP_NAME");
             _Configuration.AppDisplayName = _Configuration.AppDisplayName ?? Environment.GetEnvironmentVariable("APP_DISPLAY_NAME");
 
-            _Configuration.ApiToken = _Configuration.ApiToken ?? Environment.GetEnvironmentVariable("API_TOKEN");
+            _Configuration.ApiToken = _Configuration.ApiToken ?? root["ApiToken"] ?? Environment.GetEnvironmentVariable("API_TOKEN");
         }
 
         [HttpGet]
@@ -59,6 +59,10 @@ namespace Shipwreck.AppCenterRegistration.Controllers
                         var res = await hc.SendAsync(req).ConfigureAwait(false);
 
                         r = res.IsSuccessStatusCode;
+                        if (!res.IsSuccessStatusCode)
+                        {
+                            _Logger.LogError(await res.Content.ReadAsStringAsync().ConfigureAwait(false));
+                        }
                     }
                 }
                 catch (Exception ex)
