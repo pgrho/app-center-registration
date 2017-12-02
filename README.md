@@ -20,3 +20,10 @@ Automate Visual Studio App Center invitation.
 - `OWNER_NAME`
 - `APP_DISPLAY_NAME`
 - `API_TOKEN`
+
+When you use docker compose, you can specify those environment variables by creating `.env` file. Below is the example.
+
+```
+PORT=5010
+API_TOKEN=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
