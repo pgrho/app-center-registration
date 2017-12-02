@@ -1,6 +1,6 @@
 ## App Center Registration
 
-Automate App Center invitation.
+Automate Visual Studio App Center invitation.
 
 ## Application Settings
 
@@ -11,8 +11,12 @@ Automate App Center invitation.
   - `"AppName"`: Application name registered in App Center.
   - `"OwnerDisplayName"`: Owner name used for copyright notice.
   - `"AppDisplayName"`: Application name used for HTML.
-- `"ApiToken"`: API Token for App Center. cf https://appcenter.ms/settings/apitokens
+  - `"ApiToken"`: API Token for App Center. cf https://appcenter.ms/settings/apitokens
 
 ### Environment variables
 
+- `OWNER_NAME`
+- `APP_DISPLAY_NAME`
+- `OWNER_NAME`
+- `APP_DISPLAY_NAME`
 - `API_TOKEN`

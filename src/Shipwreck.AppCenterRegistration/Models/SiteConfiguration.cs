@@ -9,5 +9,7 @@ namespace Shipwreck.AppCenterRegistration.Models
         public string AppName { get; set; }
 
         public string AppDisplayName { get; set; }
+
+        public string ApiToken { get; set; }
     }
 }

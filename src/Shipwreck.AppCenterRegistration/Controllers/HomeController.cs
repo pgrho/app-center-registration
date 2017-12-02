@@ -13,12 +13,18 @@ namespace Shipwreck.AppCenterRegistration.Controllers
     public class HomeController : Controller
     {
         private SiteConfiguration _Configuration;
-        private string _ApiToken;
 
         public HomeController(IOptions<SiteConfiguration> configuration, IConfiguration root)
         {
             _Configuration = configuration.Value;
-            _ApiToken = root["ApiToken"] ?? Environment.GetEnvironmentVariable("API_TOKEN");
+
+            _Configuration.OwnerName = _Configuration.OwnerName ?? Environment.GetEnvironmentVariable("OWNER_NAME");
+            _Configuration.OwnerDisplayName = _Configuration.OwnerDisplayName ?? Environment.GetEnvironmentVariable("OWNER_DISPLAY_NAME");
+
+            _Configuration.AppName = _Configuration.AppName ?? Environment.GetEnvironmentVariable("APP_NAME");
+            _Configuration.AppDisplayName = _Configuration.AppDisplayName ?? Environment.GetEnvironmentVariable("APP_DISPLAY_NAME");
+
+            _Configuration.ApiToken = _Configuration.ApiToken ?? Environment.GetEnvironmentVariable("API_TOKEN");
         }
 
         [HttpGet]
@@ -39,7 +45,7 @@ namespace Shipwreck.AppCenterRegistration.Controllers
                     using (var hc = new HttpClient())
                     {
                         var req = new HttpRequestMessage(HttpMethod.Post, $"https://api.appcenter.ms/v0.1/apps/{_Configuration.OwnerName}/{_Configuration.AppName}/invitations");
-                        req.Headers.Add("X-API-Token", _ApiToken);
+                        req.Headers.Add("X-API-Token", _Configuration.ApiToken);
 
                         req.Content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(new
                         {
