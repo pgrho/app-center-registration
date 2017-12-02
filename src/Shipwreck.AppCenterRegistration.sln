@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shipwreck.AppCenterRegistration", "Shipwreck.AppCenterRegistration\Shipwreck.AppCenterRegistration.csproj", "{9F170D24-1AD6-43AA-B692-A3DD3A6C59EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Shipwreck.AppCenterRegistration", "Shipwreck.AppCenterRegistration\Shipwreck.AppCenterRegistration.csproj", "{9F170D24-1AD6-43AA-B692-A3DD3A6C59EF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{93C54F9E-BC12-4E90-B6E8-784BCD0DD92A}"
+	ProjectSection(SolutionItems) = preProject
+		..\README.md = ..\README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
