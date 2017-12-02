@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Shipwreck.AppCenterRegistration.Models;
 
@@ -12,10 +13,13 @@ namespace Shipwreck.AppCenterRegistration.Controllers
 {
     public class HomeController : Controller
     {
+        private ILogger<HomeController> _Logger;
         private SiteConfiguration _Configuration;
 
-        public HomeController(IOptions<SiteConfiguration> configuration, IConfiguration root)
+        public HomeController(ILoggerFactory loggerFactory, IOptions<SiteConfiguration> configuration, IConfiguration root)
         {
+            _Logger = loggerFactory.CreateLogger<HomeController>();
+
             _Configuration = configuration.Value;
 
             _Configuration.OwnerName = _Configuration.OwnerName ?? Environment.GetEnvironmentVariable("OWNER_NAME");
@@ -57,9 +61,10 @@ namespace Shipwreck.AppCenterRegistration.Controllers
                         r = res.IsSuccessStatusCode;
                     }
                 }
-                catch
+                catch (Exception ex)
                 {
                     r = false;
+                    _Logger.LogError(ex, "Failed to POST invitations");
                 }
             }
             else

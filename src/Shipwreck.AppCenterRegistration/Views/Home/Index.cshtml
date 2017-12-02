@@ -4,7 +4,8 @@
 }
 
 <div class="container">
-    <form class="col-sm-6" method="post">
+    <form class="col-sm-6" method="post"
+          asp-antiforgery="true">
 
         @if (Model.Result == true)
         {
